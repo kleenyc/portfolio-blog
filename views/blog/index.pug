@@ -1,0 +1,9 @@
+extends ../layout
+block body
+	.list-group
+		each message in messages
+			a.list-group-item
+				h4.list-group-item-heading= message.title
+				p= message.body
+				p.list-group-item-text=message.createdAt
+
