@@ -1,6 +1,6 @@
 {
   "development": {
-    "database": "kathysPortfolio",
+    "database": "kathysportfolio",
     "dialect": "postgres"
   },
   "test": {
