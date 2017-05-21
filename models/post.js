@@ -55,7 +55,15 @@ module.exports = function(sequelize, DataTypes) {
 			// 	return(`${this.imageUrl}-thumbnail`);
 			}
 	  },
-   //  classMethods: {
+    classMethods: {
+    	findWithSlug: function(slug) {
+				return(this.findOne({
+					where: {
+						slug: slug
+					},
+				}));
+			}
+    }
    //    associate: function(models) {
    //      models.post.hasMany(models.comment);
    //    },

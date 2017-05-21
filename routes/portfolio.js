@@ -1,17 +1,18 @@
 var express       = require('express');
 var multer        = require('multer');
 var sharp         = require('sharp');
-var models        = require('../models/portfolio');
+var models        = require('../models/index');
 var Portfolio     = models.portfolio;
 var Comment       = models.comment;
 var uploadHandler = multer({dest: 'public/images/portfolio'});
 var router        = express.Router();
 
+
 // Index.
 router.get('/', function(request, response) {
-	Post.findAll().then(function(posts) {
+	Portfolio.findAll().then(function(portfolio) {
 		response.render('portfolio/index', {
-			posts: posts
+			portfolios: portfolios
 		});
 	});
 });
@@ -26,7 +27,7 @@ router.get('/new', function(request, response) {
 
 // Create.
 router.post('/', uploadHandler.single('image'), function(request, response) {
-	Post.create({
+	Portfolio.create({
 		title:         request.body.title,
 		body:          request.body.body,
 		author:        request.body.author,
@@ -50,7 +51,7 @@ router.post('/', uploadHandler.single('image'), function(request, response) {
 
 // Show.
 router.get('/:slug', function(request, response) {
-	Post.findWithSlug(request.params.slug).then(function(post) {
+	Portfolio.findWithSlug(request.params.slug).then(function(post) {
 		response.render('portfolio/show', {
 			post:     post,
 			comment:  {}

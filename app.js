@@ -11,6 +11,13 @@ var portfolio = require('./routes/portfolio');
 
 var app = express();
 
+// Helpers.
+var dateFormat = require('dateformat');
+
+app.locals.date = function(date) {
+	return(dateFormat(date, 'dddd d mmmm yyyy'));
+};
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');

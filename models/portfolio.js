@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-	return(sequelize.define('portfolio', {
+	return(sequelize.define('portpost', {
 		title: {
 			type:      DataTypes.STRING,
 			allowNull: false,
@@ -56,7 +56,7 @@ module.exports = function(sequelize, DataTypes) {
 		},
 	  getterMethods: {
 			url: function() {
-				return(`/blog/${this.slug}`);
+				return(`/portfolio/${this.slug}`);
 			},
 			imageUrl: function() {
 				return(`/images/portfolio/${this.imageFilename}`);
@@ -65,24 +65,24 @@ module.exports = function(sequelize, DataTypes) {
 				return(`${this.imageUrl}-thumbnail`);
 			}
 	  },
-    classMethods: {
-      associate: function(models) {
-        models.portfolio.hasMany(models.comment);
+   //  classMethods: {
+   //    associate: function(models) {
+   //      models.post.hasMany(models.comment);
 
-      },
-			findWithSlug: function(slug) {
-				return(this.findOne({
-					where: {
-						slug: slug
-					},
-					include: [
-						sequelize.models.comment
-					],
-					order: [
-						[sequelize.models.comment, 'createdAt', 'DESC']
-					]
-				}));
-			}
-    }
+   //    },
+			// findWithSlug: function(slug) {
+			// 	return(this.findOne({
+			// 		where: {
+			// 			slug: slug
+			// 		},
+			// 		include: [
+			// 			sequelize.models.comment
+			// 		],
+			// 		order: [
+			// 			[sequelize.models.comment, 'createdAt', 'DESC']
+			// 		]
+			// 	}));
+			// }
+   //  }
 	}));
 };

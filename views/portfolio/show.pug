@@ -20,7 +20,7 @@ block body
 								label(for='author') Author
 								input.form-control(name='author', value=comment.author)
 							.form-group
-								label(for='body') Description
+								label(for='body') Body
 								textarea.form-control(name='body')= comment.body
 							.form-group
 								input.btn.btn-primary.btn-lg(type='submit', value='Create')
@@ -31,4 +31,4 @@ block body
 								p.list-group-item-text= comment.body
 	else
 		h2 Not Found
-		p That blog post does not exist.
+		p That image post does not exist.

@@ -2,7 +2,7 @@ extends ../layout
 
 block body
 	h1 Upload New Image
-	include errors
+	include /error
 	form(action='/portfolio', method='post', enctype='multipart/form-data')
 		.form-group
 			label(for='image') Image
