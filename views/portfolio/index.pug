@@ -1,9 +1,7 @@
 extends ../layout
-block body
-	.list-group
-		each post in posts
-			a.list-group-item
-				h4.list-group-item-heading= message.title
-				p= message.body
-				p.list-group-item-text=message.createdAt
 
+block body
+	h1 My Portfolio
+	include portfolioimages
+	div
+		a.btn.btn-primary.btn-md(href='/portfolio/new') New Post

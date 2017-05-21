@@ -1,34 +1,16 @@
 extends ../layout
 
 block body
-	if post
+	if portfolioimage
 		.row
 			.col-xs-7
-				h1 #{post.title} #[small.secondary-text= date(post.createdAt)]
-				h4 By #{post.author}
-				p= post.body
-				if post.imageFilename
-					p: img(src=post.imageThumbnailUrl)
-			.col-xs-5
-				.panel.panel-default
-					.panel-heading
-						h3.panel-title Comments
-					.panel-body
-						include errors
-						form(action=`${post.url}/comments`, method='post')
-							.form-group
-								label(for='author') Author
-								input.form-control(name='author', value=comment.author)
-							.form-group
-								label(for='body') Body
-								textarea.form-control(name='body')= comment.body
-							.form-group
-								input.btn.btn-primary.btn-lg(type='submit', value='Create')
-					ul.list-group
-						each comment in post.comments
-							li.list-group-item
-								h4.list-group-item-heading #{comment.author} #[small= date(comment.createdAt)]
-								p.list-group-item-text= comment.body
+				h1 #{portfolioimage.title} #[small.secondary-text= date(portfolioimage.createdAt)]
+				h4 By #{portfolioimage.author}
+				p= portfolioimage.body
+				if portfolioimage.imageFilename
+					p: img(src=portfolioimage.imageThumbnailUrl)
+
 	else
 		h2 Not Found
 		p That image post does not exist.
+

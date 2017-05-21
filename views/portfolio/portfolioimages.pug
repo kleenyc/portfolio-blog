@@ -1,0 +1,6 @@
+.list-group
+	each portfolioimage in portfolioimages
+		a.list-group-item(href=portfolioimage.url)
+			h4.list-group-item-heading #{portfolioimage.title} #[small= date(portfolioimage.createdAt)]
+			p.list-group-item-text By #{portfolioimage.author}
+			

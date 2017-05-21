@@ -2,22 +2,22 @@ extends ../layout
 
 block body
 	h1 Upload New Image
-	include /error
+	include errors
 	form(action='/portfolio', method='post', enctype='multipart/form-data')
 		.form-group
 			label(for='image') Image
 			input.form-control(name='image', type='file')
 		.form-group
 			label(for='title') Title
-			input.form-control(name='title', value=post.title, autofocus)
+			input.form-control(name='title', value=portfolioimage.title, autofocus)
 		.form-group
 			label(for='body') Description
-			textarea.form-control(name='body')= post.body
+			textarea.form-control(name='body')= portfolioimage.body
 		.form-group
 			label(for='author') Author
-			input.form-control(name='author', value=post.author)
+			input.form-control(name='author', value=portfolioimage.author)
 		.form-group
 			label(for='slug') Slug
-			input.form-control(name='slug', value=post.slug)
+			input.form-control(name='slug', value=portfolioimage.slug)
 		.form-group
-			input.btn.btn-primary.btn-lg(type='submit', value='Create')
+			input.btn.btn-primary.btn-lg(type='submit', value='Post')

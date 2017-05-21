@@ -2,17 +2,16 @@ var express       = require('express');
 var multer        = require('multer');
 var sharp         = require('sharp');
 var models        = require('../models/index');
-var Portfolio     = models.portfolio;
-var Comment       = models.comment;
+var Portfolioimage = models.portfolioimage;
 var uploadHandler = multer({dest: 'public/images/portfolio'});
 var router        = express.Router();
 
 
 // Index.
 router.get('/', function(request, response) {
-	Portfolio.findAll().then(function(portfolio) {
+	Portfolioimage.findAll().then(function(portfolioimages) {
 		response.render('portfolio/index', {
-			portfolios: portfolios
+			portfolioimages: portfolioimages
 		});
 	});
 });
@@ -21,39 +20,39 @@ router.get('/', function(request, response) {
 // New.
 router.get('/new', function(request, response) {
 	response.render('portfolio/new', {
-		post: {}
+		portfolioimage: {}
 	});
 });
 
 // Create.
 router.post('/', uploadHandler.single('image'), function(request, response) {
-	Portfolio.create({
+	Portfolioimage.create({
 		title:         request.body.title,
 		body:          request.body.body,
 		author:        request.body.author,
 		slug:          request.body.slug,
 		imageFilename: (request.file && request.file.filename)
-	}).then(function(post) {
+	}).then(function(portfolioimage) {
 		sharp(request.file.path)
 		.resize(300, 300)
 		.max()
 		.withoutEnlargement()
 		.toFile(`${request.file.path}-thumbnail`, function() {
-			response.redirect(post.url);
+			response.redirect(portfolioimage.url);
 		});
 	}).catch(function(error) {
-		response.render('blog/new', {
-			post:   request.body,
-			errors: error.errors
+		response.render('portfolio/new', {
+			portfolioimage:   request.body,
+			errors: 		  error.errors
 		});
 	});
 });
 
 // Show.
 router.get('/:slug', function(request, response) {
-	Portfolio.findWithSlug(request.params.slug).then(function(post) {
+	Portfolioimage.findWithSlug(request.params.slug).then(function(portfolioimage) {
 		response.render('portfolio/show', {
-			post:     post,
+			portfolioimage:     portfolioimage,
 			comment:  {}
 		});
 	});

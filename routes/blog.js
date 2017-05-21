@@ -10,7 +10,7 @@ router.get('/', function(request, response) {
 		response.render('blog/index', {
 			posts: posts
 		});
-	});
+	})
 });
 
 
@@ -18,7 +18,7 @@ router.get('/', function(request, response) {
 router.get('/new', function(request, response) {
 	response.render('blog/new', {
 		post: {}
-	});
+	})
 });
 
 // Create.
@@ -30,6 +30,11 @@ router.post('/', function(request, response) {
 		slug:          request.body.slug
 	}).then(function(post) {
 		response.redirect(post.url);
+	}).catch(function(error) {
+		response.render('blog/new', {
+			post:   request.body,
+			errors: error.errors
+		})
 	});
 });
 

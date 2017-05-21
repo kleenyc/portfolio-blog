@@ -1,5 +1,15 @@
 module.exports = function(sequelize, DataTypes) {
-	return(sequelize.define('portpost', {
+	return(sequelize.define('portfolioimage', {
+		imageFilename: {
+			type:         DataTypes.STRING,
+			allowNull:    false,
+			defaultValue: '',
+			validate: {
+				notEmpty: {
+					msg: 'Image is required'
+				}
+			}
+		},
 		title: {
 			type:      DataTypes.STRING,
 			allowNull: false,
@@ -14,7 +24,7 @@ module.exports = function(sequelize, DataTypes) {
 			allowNull: false,
 			validate: {
 				notEmpty: {
-					msg: 'Body is required'
+					msg: 'Description is required'
 				}
 			}
 		},
@@ -40,16 +50,6 @@ module.exports = function(sequelize, DataTypes) {
 				}
 			}
 		},
-		imageFilename: {
-			type:         DataTypes.STRING,
-			allowNull:    false,
-			defaultValue: '',
-			validate: {
-				notEmpty: {
-					msg: 'Image is required'
-				}
-			}
-		}
 	}, {
 		defaultScope: {
 			order: [['createdAt', 'DESC']]
@@ -65,6 +65,16 @@ module.exports = function(sequelize, DataTypes) {
 				return(`${this.imageUrl}-thumbnail`);
 			}
 	  },
+	   classMethods: {
+    	findWithSlug: function(slug) {
+				return(this.findOne({
+					where: {
+						slug: slug
+					},
+				}));
+			}
+    }
+
    //  classMethods: {
    //    associate: function(models) {
    //      models.post.hasMany(models.comment);
