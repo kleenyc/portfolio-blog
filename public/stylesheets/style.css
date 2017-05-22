@@ -1,8 +1,44 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  	padding: 50px;
+	font-family: "Lucida Console", Courier, monospace;  color: navy;
+  	background: url("http://www.powerpointhintergrund.com/uploads/notebook-ppt-background-20.jpg") no-repeat center center fixed;
+  	background-size: cover;
+	margin-left: 50px;
+} 
+
+a:link {
+  	text-decoration: none;
 }
 
 a {
-  color: #00B7FF;
+	color: navy;
 }
+
+li {
+	color: red;
+}
+
+.nav {
+	font-size: 18px;
+}
+
+.heading {
+	margin-bottom: 20px;
+}
+
+h3 {
+	color: #349b15;
+}
+
+h4 {
+	color: #f46b42;
+}
+
+.posttext {
+	margin-top: 26px;
+}
+
+.btn {
+	margin-top: 50px;
+}
+

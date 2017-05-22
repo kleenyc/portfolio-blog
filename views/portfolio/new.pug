@@ -5,9 +5,6 @@ block body
 	include errors
 	form(action='/portfolio', method='post', enctype='multipart/form-data')
 		.form-group
-			label(for='image') Image
-			input.form-control(name='image', type='file')
-		.form-group
 			label(for='title') Title
 			input.form-control(name='title', value=portfolioimage.title, autofocus)
 		.form-group
@@ -19,5 +16,8 @@ block body
 		.form-group
 			label(for='slug') Slug
 			input.form-control(name='slug', value=portfolioimage.slug)
+		.form-group
+			label(for='image') Image
+			input(name='image', type='file')
 		.form-group
 			input.btn.btn-primary.btn-lg(type='submit', value='Post')

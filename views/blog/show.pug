@@ -4,10 +4,13 @@ block body
 	if post
 		.row
 			.col-xs-7
-				h1 #{post.title} #[small.secondary-text= date(post.createdAt)]
-				h4 By #{post.author}
-				p= post.body
+				h2 #{post.title} #[small.secondary-text= date(post.createdAt)]
+				h5 By #{post.author}
+				p.posttext= post.body
 				
 	else
 		h2 Not Found
 		p That blog post does not exist.
+
+	div
+		a.btn.btn-primary.btn-sm(href='/blog') Back

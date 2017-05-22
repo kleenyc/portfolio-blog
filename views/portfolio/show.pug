@@ -5,12 +5,14 @@ block body
 		.row
 			.col-xs-7
 				h1 #{portfolioimage.title} #[small.secondary-text= date(portfolioimage.createdAt)]
-				h4 By #{portfolioimage.author}
+				h5 By #{portfolioimage.author}
 				p= portfolioimage.body
 				if portfolioimage.imageFilename
 					p: img(src=portfolioimage.imageThumbnailUrl)
-
+	
 	else
 		h2 Not Found
-		p That image post does not exist.
+		p That image post does not exist.		
 
+	div
+		a.btn.btn-primary.btn-sm(href='/portfolio') Back
