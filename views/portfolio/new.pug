@@ -1,7 +1,7 @@
 extends ../layout
 
 block body
-	h1 Upload New Image
+	h1 Upload New Post
 	include errors
 	form(action='/portfolio', method='post', enctype='multipart/form-data')
 		.form-group
@@ -20,4 +20,4 @@ block body
 			label(for='image') Image
 			input(name='image', type='file')
 		.form-group
-			input.btn.btn-primary.btn-lg(type='submit', value='Post')
+			input.btn.btn-primary.btn-sm(type='submit', value='Post')

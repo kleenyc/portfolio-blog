@@ -6,9 +6,10 @@ block body
 			.col-xs-7
 				h1 #{portfolioimage.title} #[small.secondary-text= date(portfolioimage.createdAt)]
 				h5 By #{portfolioimage.author}
-				p= portfolioimage.body
+				p.posttext= portfolioimage.body
 				if portfolioimage.imageFilename
-					p: img(src=portfolioimage.imageThumbnailUrl)
+					p: a(href=`${portfolioimage.url}/photo`)
+						img(src=portfolioimage.imageThumbnailUrl)
 	
 	else
 		h2 Not Found

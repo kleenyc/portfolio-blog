@@ -1,0 +1,12 @@
+extends ../layout
+
+block body
+	if portfolioimage
+		p: img(src=portfolioimage.imageUrl)
+	
+	else
+		h2 Not Found
+		p That image post does not exist.		
+
+	div
+		a.btn.btn-primary.btn-sm(href=portfolioimage.url) Back
