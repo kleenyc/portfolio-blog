@@ -47,12 +47,7 @@ module.exports = function(sequelize, DataTypes) {
 	  getterMethods: {
 			url: function() {
 				return(`/blog/${this.slug}`);
-			// },
-			// imageUrl: function() {
-			// 	return(`/images/blog/${this.imageFilename}`);
-			// },
-			// imageThumbnailUrl: function() {
-			// 	return(`${this.imageUrl}-thumbnail`);
+	
 			}
 	  },
     classMethods: {
@@ -64,22 +59,6 @@ module.exports = function(sequelize, DataTypes) {
 				}));
 			}
     }
-   //    associate: function(models) {
-   //      models.post.hasMany(models.comment);
-   //    },
-			// findWithSlug: function(slug) {
-			// 	return(this.findOne({
-			// 		where: {
-			// 			slug: slug
-			// 		},
-			// 		include: [
-			// 			sequelize.models.comment
-			// 		],
-			// 		order: [
-			// 			[sequelize.models.comment, 'createdAt', 'DESC']
-			// 		]
-			// 	}));
-			// }
-   //  }
+
 	}));
 };
