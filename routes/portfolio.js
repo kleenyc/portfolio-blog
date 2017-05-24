@@ -34,7 +34,7 @@ router.post('/', uploadHandler.single('image'), function(request, response) {
 		imageFilename: (request.file && request.file.filename)
 	}).then(function(portfolioimage) {
 		sharp(request.file.path)
-		.resize(300, 300)
+		.resize(400, 400)
 		.max()
 		.withoutEnlargement()
 		.toFile(`${request.file.path}-thumbnail`, function() {
@@ -58,6 +58,14 @@ router.get('/:slug', function(request, response) {
 	});
 });
 
+// Show Pic.
+router.get('/:slug/photo', function(request, response) {
+	Portfolioimage.findWithSlug(request.params.slug).then(function(portfolioimage) {
+		response.render('portfolio/photo', {
+			portfolioimage:     portfolioimage
+		});
+	});
+});
 
 
 module.exports = router;

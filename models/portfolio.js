@@ -75,24 +75,5 @@ module.exports = function(sequelize, DataTypes) {
 			}
     }
 
-   //  classMethods: {
-   //    associate: function(models) {
-   //      models.post.hasMany(models.comment);
-
-   //    },
-			// findWithSlug: function(slug) {
-			// 	return(this.findOne({
-			// 		where: {
-			// 			slug: slug
-			// 		},
-			// 		include: [
-			// 			sequelize.models.comment
-			// 		],
-			// 		order: [
-			// 			[sequelize.models.comment, 'createdAt', 'DESC']
-			// 		]
-			// 	}));
-			// }
-   //  }
 	}));
 };
